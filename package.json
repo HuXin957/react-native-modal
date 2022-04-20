@@ -1,6 +1,6 @@
 {
   "name": "@huxin957/react-native-modal",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "reace-native-modal",
   "main": "index.js",
   "scripts": {
@@ -15,9 +15,5 @@
   "bugs": {
     "url": "https://github.com/HuXin957/react-native-modal/issues"
   },
-  "homepage": "https://github.com/HuXin957/react-native-modal#readme",
-  "dependencies": {
-    "@huxin957/react-native-portal": "^1.0.0",
-    "react-native-line-style": "^0.1.1"
-  }
+  "homepage": "https://github.com/HuXin957/react-native-modal#readme"
 }
