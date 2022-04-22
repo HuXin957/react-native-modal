@@ -246,8 +246,9 @@ export default class RCModal extends React.Component {
     };
 
     const positionMap = {
+      "none":[],
       "slide-up": [y.uje],
-      fade: [y.ujc, y.uac],
+      "fade": [y.ujc, y.uac],
       "slide-down": [y.ujs],
     };
     // 不能使用KeyboardAvoidingView 的原因：modal 里没有输入框

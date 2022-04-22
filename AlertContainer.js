@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import Modal from "./Modal";
+import Modal from "./index";
 import y from "react-native-line-style";
 
 export default class AlertContainer extends React.Component {

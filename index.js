@@ -1,5 +1,5 @@
 import React from "react";
-import Mask from './Mask';
+import Mask from './ModalView';
 import AlertContainer from './AlertContainer';
 import Portal from '@huxin957/react-native-portal';
 
