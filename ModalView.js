@@ -7,9 +7,9 @@ import {
   TouchableWithoutFeedback,
   View,
   Keyboard,
-  Platform
+  Platform,
 } from "react-native";
-import Portal from '@huxin957/react-native-portal';
+import Portal from "@huxin957/react-native-portal";
 import y from "react-native-line-style";
 
 const isIOS = Platform.OS === "ios";
@@ -231,24 +231,28 @@ export default class RCModal extends React.Component {
   };
 
   render() {
-    const { props } = this;
-    if (!this.state.modalVisible) {
+    const { animationType, style = [] } = this.props;
+    const { keyboardHeight, scale, opacity, position, modalVisible } =
+      this.state;
+
+    if (!modalVisible) {
       return null;
     }
+
     const animationStyleMap = {
       none: {},
-      "slide-up": { transform: [{ translateY: this.state.position }] },
-      "slide-down": { transform: [{ translateY: this.state.position }] },
+      "slide-up": { transform: [{ translateY: position }] },
+      "slide-down": { transform: [{ translateY: position }] },
       fade: {
-        transform: [{ scale: this.state.scale }],
-        opacity: this.state.opacity,
+        opacity,
+        transform: [{ scale }],
       },
     };
 
     const positionMap = {
-      "none":[],
+      none: [],
       "slide-up": [y.uje],
-      "fade": [y.ujc, y.uac],
+      fade: [y.ujc, y.uac],
       "slide-down": [y.ujs],
     };
     // 不能使用KeyboardAvoidingView 的原因：modal 里没有输入框
@@ -257,8 +261,9 @@ export default class RCModal extends React.Component {
         <View
           style={[
             y.uf1,
-            y.pb_(this.state.keyboardHeight),
-            ...positionMap[props.animationType],
+            y.pb_(keyboardHeight),
+            ...style,
+            ...positionMap[animationType],
           ]}
         >
           <TouchableWithoutFeedback onPress={this.onMaskClose}>
@@ -269,7 +274,7 @@ export default class RCModal extends React.Component {
                 y.left(0),
                 y.right(0),
                 y.bottom(0),
-                { opacity: this.state.opacity },
+                { opacity },
               ]}
             >
               <View
@@ -284,9 +289,7 @@ export default class RCModal extends React.Component {
               />
             </Animated.View>
           </TouchableWithoutFeedback>
-          <Animated.View
-            style={[props.style, animationStyleMap[props.animationType]]}
-          >
+          <Animated.View style={[animationStyleMap[animationType]]}>
             {this.props.children}
           </Animated.View>
         </View>
