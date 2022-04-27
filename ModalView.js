@@ -68,7 +68,7 @@ export default class RCModal extends React.Component {
       Keyboard.addListener("keyboardDidHide", this._keyboardDidHide.bind(this));
     }
 
-    if (this.props.animateAppear && this.props.animationType !== "none") {
+    if (this.props.animateAppear) {
       BackHandler.addEventListener(
         "hardwareBackPress",
         this.onBackAndroid.bind(this)
