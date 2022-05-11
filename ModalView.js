@@ -64,8 +64,14 @@ export default class RCModal extends React.Component {
 
   componentDidMount() {
     if (isIOS) {
-      Keyboard.addListener("keyboardDidShow", this._keyboardDidShow.bind(this));
-      Keyboard.addListener("keyboardDidHide", this._keyboardDidHide.bind(this));
+      this.keyboardDidShowListener = Keyboard.addListener(
+        "keyboardDidShow",
+        this._keyboardDidShow.bind(this)
+      );
+      this.keyboardDidHideListener = Keyboard.addListener(
+        "keyboardDidHide",
+        this._keyboardDidHide.bind(this)
+      );
     }
 
     if (this.props.animateAppear) {
@@ -86,14 +92,8 @@ export default class RCModal extends React.Component {
 
   componentWillUnmount() {
     if (isIOS) {
-      Keyboard.removeListener(
-        "keyboardDidShow",
-        this._keyboardDidShow.bind(this)
-      );
-      Keyboard.removeListener(
-        "keyboardDidHide",
-        this._keyboardDidHide.bind(this)
-      );
+      this.keyboardDidShowListener.remove();
+      this.keyboardDidHideListener.remove();
     }
 
     BackHandler.removeEventListener(
